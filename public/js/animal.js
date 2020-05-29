@@ -35,6 +35,14 @@ function init(){
     missingWatchForm();
 }
 
+function authRole(role){
+    return (req, res, next) => {
+        if(req.user.role != role){
+            res.status(401)
+            return res.send('Not allowed')
+        }
+    }
+}
 function addWatchForm(){
     let addBtn = document.querySelector("#addBtn");
     let modal1Ref = document.querySelector("#modalAdd");
